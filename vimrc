@@ -455,20 +455,22 @@ nmap <leader>l :wincmd l<CR>
 "___________________
 "
 
+
 " turn on sytax
 syntax enable
+
+"command for identifying syntax highlighting group
+command SynID  echo synIDattr(synID(line("."), col("."), 1), "name")
+nmap <leader>s :SynID<CR>
 
 " enable 256 colors
 set t_Co=256
 set termguicolors
+
+"color a column to indicate if a line is too long
 set colorcolumn=80
 
-" line numbers
-highlight LineNr guifg=#999999 ctermfg=darkgrey
-highlight ColorColumn guibg=#333333 ctermbg=darkgrey
 
-" normal text
-highlight Normal guifg=#ffffff guibg=#1d1d1d ctermfg=white ctermbg=black
 
 
 
@@ -494,11 +496,9 @@ set matchpairs+=<:>
 
 " use flake 8 for syntax
 let g:syntastic_python_checkers=['flake8']
-
 " ignore pep8 flags
 let g:syntastic_python_flake8_args='--ignore=F541,E128,E305,E501,E741,E203,W503,E302,E228,E303,E124,E127,E251,E226,W291,E231,E201,E202,E265,E222,E225,E115,E116,E117,E241,E261,E262,W391,E402,F401,E301,E266,F841,E114,E126,E123'
 
-"autocmd FileType python let b:AutoPairs = AutoPairsDefine({"f'" : "'", "r'" : "'", "b'" : "'"})
 
 
 
@@ -517,43 +517,38 @@ let python_highlight_all=1
 let python_highlight_operators=0
 
 
-" see
-" https://github.com/vim-python/python-syntax/blob/master/syntax/python.vim
-" for syntax groups
 
 
-" green
-highlight pythonString guifg=#19aa1c guibg=#1d1d1d ctermfg=green ctermbg=black
-highlight pythonFString guifg=#19aa1c guibg=#1d1d1d ctermfg=green ctermbg=black
+ "see
+ "https://github.com/vim-python/python-syntax/blob/master/syntax/python.vim
+ "for syntax groups
 
-" red
-highlight pythonComment guifg=#8c403f guibg=#1d1d1d ctermfg=red ctermbg=black
 
-" yellow
-highlight pythonNumber guifg=#efc402 guibg=#1d1d1d ctermfg=yellow ctermbg=black
-highlight pythonFloat guifg=#efc402 guibg=#1d1d1d ctermfg=yellow ctermbg=black
 
-" Orange
-highlight pythonBoolean guifg=#c17228 guibg=#1d1d1d ctermfg=darkyellow ctermbg=black
-highlight pythonNone guifg=#c17228 guibg=#1d1d1d ctermfg=darkyellow ctermbg=black
-highlight pythonOperator guifg=#c17228 guibg=#1d1d1d ctermfg=darkyellow ctermbg=black
-highlight pythonImport guifg=#c17228 guibg=#1d1d1d ctermfg=darkyellow ctermbg=black
-highlight pythonStatement guifg=#c17228 guibg=#1d1d1d ctermfg=darkyellow ctermbg=black
-highlight pythonRepeat guifg=#c17228 guibg=#1d1d1d ctermfg=darkyellow ctermbg=black
-highlight pythonConditional guifg=#c17228 guibg=#1d1d1d ctermfg=darkyellow ctermbg=black
-highlight pythonException guifg=#c17228 guibg=#1d1d1d ctermfg=darkyellow ctermbg=black
+"___________________
+"c syntax highlighting
+"___________________
+"___________________
+"
 
-" Blue
-highlight pythonFunction guifg=#2b83db guibg=#1d1d1d  ctermfg=blue ctermbg=black
-highlight pythonClass guifg=#2b83db guibg=#1d1d1d  ctermfg=blue ctermbg=black
-highlight pythonFunctionCall guifg=#2b83db guibg=#1d1d1d  ctermfg=blue ctermbg=black
+""highlight cString 
 
-" purple
-highlight pythonBuiltinType guifg=#9328c1 guibg=#1d1d1d  ctermfg=magenta ctermbg=black
-highlight pythonBuiltinFunc guifg=#9328c1 guibg=#1d1d1d  ctermfg=magenta ctermbg=black
-highlight pythonBuiltin guifg=#9328c1 guibg=#1d1d1d  ctermfg=magenta ctermbg=black
-highlight pythonBuiltinObj guifg=#9328c1 guibg=#1d1d1d  ctermfg=magenta ctermbg=black
-highlight pythonClassVar guifg=#9328c1 guibg=#1d1d1d  ctermfg=magenta ctermbg=black
-" pythonError is linked to Structure
-highlight Structure guifg=#9328c1  guibg=#1d1d1d  ctermfg=magenta ctermbg=black
 
+""orange
+"highlight cType guifg=#c17228 guibg=#1d1d1d ctermfg=darkyellow ctermbg=black
+"highlight cStatement guifg=#c17228 guibg=#1d1d1d  ctermfg=magenta ctermbg=black
+
+""purple
+"highlight cInclude guifg=#9328c1 guibg=#1d1d1d  ctermfg=magenta ctermbg=black
+
+""yellow
+"highlight cNumber guifg=#efc402 guibg=#1d1d1d ctermfg=yellow ctermbg=black
+
+""grey
+"highlight cCommentL guifg=#666666 guibg=#1d1d1d ctermfg=grey ctermbg=black
+"highlight cComment guifg=#666666 guibg=#1d1d1d ctermfg=gray ctermbg=black
+
+"highlight cIncluded guifg=#cfcfcf guibg=#1d1d1d ctermfg=white ctermbg=black
+"
+colorscheme evening
+so ~/.vim/hi.vim
