@@ -1,4 +1,3 @@
-
 "___________________
 "___________________
 "Start up settings
@@ -470,6 +469,14 @@ set termguicolors
 "color a column to indicate if a line is too long
 set colorcolumn=80
 
+
+
+fun! SetPyMatch()
+    syn match myPy /\%(match:\)\|\%(case:\)/
+    hi link myPy pythonConditional
+endfu
+autocmd bufenter * :call SetPyMatch()
+autocmd filetype * :call SetPyMatch()
 
 
 
