@@ -132,7 +132,13 @@ call plug#begin()
     Plug 'vim-python/python-syntax'
 
 
+    Plug 'mattn/emmet-vim'
+
+
 call plug#end()
+
+
+
 
 ""___________________
 ""___________________
@@ -287,6 +293,7 @@ set smartindent
 set expandtab
 "new line above and below has same indentations
 set autoindent
+
 
 " tab lengths
 set tabstop=4
@@ -500,5 +507,4 @@ highlight pythonClassVar guifg=#9328c1 guibg=#1d1d1d ctermfg=magenta ctermbg=bla
 
 highlight pythonBytesEscape guifg=#88dd88 guibg=#1d1d1d ctermfg=green ctermbg=black 
 highlight pythonStrFormat guifg=#88dd88 guibg=#1d1d1d ctermfg=green ctermbg=black 
-
 
