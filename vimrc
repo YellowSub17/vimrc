@@ -142,6 +142,16 @@ call plug#end()
 
 ""___________________
 ""___________________
+""YouCompleteMe settings
+""___________________
+""___________________
+
+
+
+"let g:ycm_global_ycm_extra_conf = '/home/pat/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+
+""___________________
+""___________________
 ""Lightline settings
 ""___________________
 ""___________________
