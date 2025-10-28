@@ -132,7 +132,11 @@ call plug#begin()
     Plug 'vim-python/python-syntax'
 
 
-    Plug 'mattn/emmet-vim'
+    "" tidal and supercollider
+    Plug 'tidalcycles/vim-tidal'
+
+
+    "Plug 'mattn/emmet-vim'
 
 
 call plug#end()
@@ -362,15 +366,15 @@ nnoremap <CR> :noh<CR><CR>
 "___________________
 "___________________
 
-" disable autoindent when pasting text
-" source: https://coderwall.com/p/if9mda/automatically-set-paste-mode-in-vim-when-pasting-in-insert-mode
-let &t_SI .= "\<Esc>[?2004h"
-let &t_EI .= "\<Esc>[?2004l"
+"" disable autoindent when pasting text
+"" source: https://coderwall.com/p/if9mda/automatically-set-paste-mode-in-vim-when-pasting-in-insert-mode
+"let &t_SI .= "\<Esc>[?2004h"
+"let &t_EI .= "\<Esc>[?2004l"
 
-" copy, cut and paste
-set clipboard=unnamedplus
-inoremap <C-v> <ESC>"+pa
-vnoremap <C-c> "+y
+"" copy, cut and paste
+"set clipboard=unnamedplus
+"inoremap <C-v> <ESC>"+pa
+"vnoremap <C-c> "+y
 
 
 "___________________
@@ -482,20 +486,42 @@ let python_highlight_operators=0
 
 
 
-
-
 ""python highlighting
+
+"" reds (comments)
 highlight pythonComment guifg=#994444 guibg=#1d1d1d ctermfg=red ctermbg=black 
-highlight pythonString guifg=#19aa1c guibg=#1d1d1d ctermfg=green ctermbg=black 
-highlight pythonFString guifg=#19aa1c guibg=#1d1d1d ctermfg=green ctermbg=black 
-highlight pythonQuotes guifg=#19aa1c guibg=#1d1d1d ctermfg=green ctermbg=black 
+
+
+"" matrix green (strings)
+highlight pythonString guifg=#19aa1c guibg=#1d1d1d ctermfg=darkgreen ctermbg=black 
+highlight pythonFString guifg=#19aa1c guibg=#1d1d1d ctermfg=darkgreen ctermbg=black 
+highlight pythonQuotes guifg=#19aa1c guibg=#1d1d1d ctermfg=darkgreen ctermbg=black 
+
+
+"" light green (extra string stuff)
+highlight pythonBytesEscape guifg=#88dd88 guibg=#1d1d1d ctermfg=green ctermbg=black 
+highlight pythonBytesContent guifg=#88dd88 guibg=#1d1d1d ctermfg=green ctermbg=black 
+highlight pythonStrFormat guifg=#88dd88 guibg=#1d1d1d ctermfg=green ctermbg=black 
+highlight pythonRawString guifg=#88dd88 guibg=#1d1d1d ctermfg=green ctermbg=black 
+
+
+"" blue (function definitions)
 highlight pythonFunction guifg=#2b83db guibg=#1d1d1d ctermfg=blue ctermbg=black 
 highlight pythonClass guifg=#2b83db guibg=#1d1d1d ctermfg=blue ctermbg=black 
-highlight pythonDecorator guifg=#22eeee guibg=#1d1d1d ctermfg=cyan ctermbg=black 
-highlight pythonDottedName guifg=#22eeee guibg=#1d1d1d ctermfg=cyan ctermbg=black 
+
+"" cyan (function calls)
+highlight pythonDecorator cterm=bold guifg=#22eeee guibg=#1d1d1d ctermfg=cyan ctermbg=black 
+highlight pythonDottedName cterm=bold guifg=#22eeee guibg=#1d1d1d ctermfg=cyan ctermbg=black 
 highlight pythonFunctionCall guifg=#22eeee guibg=#1d1d1d ctermfg=cyan ctermbg=black 
+
+
+"" yellow (numbers)
 highlight pythonFloat guifg=#efc402 guibg=#1d1d1d ctermfg=yellow ctermbg=black 
 highlight pythonNumber guifg=#efc402 guibg=#1d1d1d ctermfg=yellow ctermbg=black 
+
+
+
+"" orange (keywords)
 highlight pythonBoolean guifg=#c17228 guibg=#1d1d1d ctermfg=darkyellow ctermbg=black 
 highlight pythonNone guifg=#c17228 guibg=#1d1d1d ctermfg=darkyellow ctermbg=black 
 highlight pythonOperator guifg=#c17228 guibg=#1d1d1d ctermfg=darkyellow ctermbg=black 
@@ -508,6 +534,8 @@ highlight pythonExClass guifg=#c17228 guibg=#1d1d1d ctermfg=darkyellow ctermbg=b
 highlight pythonExClass guifg=#c17228 guibg=#1d1d1d ctermfg=darkyellow ctermbg=black 
 highlight pythonExClass guifg=#c17228 guibg=#1d1d1d ctermfg=darkyellow ctermbg=black 
 
+
+"" purple (builtins)
 highlight pythonBuiltinType guifg=#9328c1 guibg=#1d1d1d ctermfg=magenta ctermbg=black 
 highlight pythonBuiltinFunc guifg=#9328c1 guibg=#1d1d1d ctermfg=magenta ctermbg=black 
 highlight pythonInclude guifg=#9328c1 guibg=#1d1d1d ctermfg=magenta ctermbg=black 
@@ -515,6 +543,46 @@ highlight pythonBuiltin guifg=#9328c1 guibg=#1d1d1d ctermfg=magenta ctermbg=blac
 highlight pythonBuiltinObj guifg=#9328c1 guibg=#1d1d1d ctermfg=magenta ctermbg=black 
 highlight pythonClassVar guifg=#9328c1 guibg=#1d1d1d ctermfg=magenta ctermbg=black 
 
-highlight pythonBytesEscape guifg=#88dd88 guibg=#1d1d1d ctermfg=green ctermbg=black 
-highlight pythonStrFormat guifg=#88dd88 guibg=#1d1d1d ctermfg=green ctermbg=black 
+
+
+""rust highlighting
+
+
+"" pink = ff98f0
+
+
+highlight rustFuncCall guifg=#ffaaff guibg=#1d1d1d ctermfg=magenta ctermbg=black 
+highlight rustFuncName guifg=#ffaaff guibg=#1d1d1d ctermfg=magenta ctermbg=black 
+highlight rustMacro guifg=#ffaaff guibg=#1d1d1d ctermfg=magenta ctermbg=black 
+
+highlight rustKeyword guifg=#88ffff guibg=#1d1d1d ctermfg=cyan ctermbg=black 
+highlight rustStructure guifg=#88ffff guibg=#1d1d1d ctermfg=cyan ctermbg=black 
+
+highlight rustStorage guifg=#88dd88 guibg=#1d1d1d ctermfg=green ctermbg=black 
+highlight rustType guifg=#88dd88 guibg=#1d1d1d ctermfg=green ctermbg=black 
+highlight rustTrait guifg=#88ee88 guibg=#1d1d1d ctermfg=green ctermbg=black 
+highlight rustEnumVariant guifg=#88ee88 guibg=#1d1d1d ctermfg=white ctermbg=black
+
+
+highlight rustOperator guifg=#eeeeee guibg=#1d1d1d ctermfg=white ctermbg=black 
+highlight rustModPath guifg=#eeeeee guibg=#1d1d1d ctermfg=white ctermbg=black 
+highlight rustModPathSep guifg=#eeeeee guibg=#1d1d1d ctermfg=white ctermbg=black 
+highlight rustStorage guifg=#eeeeee guibg=#1d1d1d ctermfg=white ctermbg=black 
+highlight rustConditional guifg=#eeeeee guibg=#1d1d1d ctermfg=white ctermbg=black 
+
+highlight rustString guifg=#efc402 guibg=#1d1d1d ctermfg=yellow ctermbg=black 
+highlight rustStringDelimiter guifg=#efc402 guibg=#1d1d1d ctermfg=yellow ctermbg=black 
+highlight rustFloat guifg=#eeeeee guibg=#1d1d1d ctermfg=white ctermbg=black 
+highlight rustRepeat guifg=#eeeeee guibg=#1d1d1d ctermfg=white ctermbg=black 
+highlight rustDecNumber guifg=#eeeeee guibg=#1d1d1d ctermfg=white ctermbg=black 
+highlight rustSelf guifg=#eeeeee guibg=#1d1d1d ctermfg=white ctermbg=black 
+highlight rustIdentifier guifg=#eeeeee guibg=#1d1d1d ctermfg=white ctermbg=black 
+
+
+highlight rustSigil guifg=#eeeeee guibg=#1d1d1d ctermfg=white ctermbg=black 
+highlight rustQuestionMark guifg=#eeeeee guibg=#1d1d1d ctermfg=white ctermbg=black 
+highlight rustLifetime guifg=#eeeeee guibg=#1d1d1d ctermfg=white ctermbg=black 
+
+"highlight rustCommentLine guifg=#eeeeee guibg=#1d1d1d ctermfg=white ctermbg=black 
+
 
