@@ -215,7 +215,7 @@ syn match pythonCustomConditional /\%(match:\)\|\%(case:\)/
 hi link pythonCustomConditional pythonConditional
 
 " Normal 
-highlight pythonOperator     guifg=NONE
+highlight pythonOperator     guifg=#ffffff
 
 " Reds (comments) 
 highlight pythonComment      guifg=#994444
