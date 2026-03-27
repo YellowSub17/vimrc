@@ -26,7 +26,7 @@ endif
 call plug#begin()
     Plug 'itchyny/lightline.vim' 
     Plug 'mengelbrecht/lightline-bufferline' 
-    Plug 'ycm-core/YouCompleteMe' 
+    "Plug 'ycm-core/YouCompleteMe' 
     Plug 'preservim/nerdcommenter' 
     Plug 'machakann/vim-highlightedyank' 
     Plug 'preservim/nerdtree' 
@@ -99,6 +99,8 @@ nmap <S-Right> w
 nmap <leader>[ :bp!<CR>
 nmap <leader>] :bn!<CR>
 
+
+" leader x to go to buffer x
 for i in range(1, 9)
 exe 'nmap <Leader>'.i.' <Plug>lightline#bufferline#go('.i.')'
 endfor
@@ -115,26 +117,16 @@ ca q :call MyClose()
 nnoremap <C-t> :NERDTreeToggle<CR>
 
 
-
 "" Ctrl+C to copy in Visual Mode
 vnoremap <leader>copytext "+y
 
 "" Ctrl+V to paste in Normal and Insert Mode
 nnoremap <leader>pastetext "+p
-"inoremap <C-v> <C-r>+
 
 " =============================================================================
-" 5. APPEARANCE & LIGHTLINE
+" LIGHTLINE
 " =============================================================================
 
-colorscheme evening 
-highlight Normal       guifg=#cfcfcf guibg=#1d1d1d
-highlight LineNr       guifg=#999999 guibg=#1d1d1d
-highlight ColorColumn  guibg=#333333 
-highlight EndOfBuffer  guifg=#ffffff guibg=#1d1d1d
-
-command! SynID echo synIDattr(synID(line("."), col("."), 1), "name")
-nmap <leader>s :SynID<CR>
 
 " Lightline + Bufferline Integration
 let g:lightline = {
@@ -155,6 +147,34 @@ let g:lightline = {
     \ }
 
 let g:lightline#bufferline#show_number = 2
+
+
+
+
+" =============================================================================
+" GENERAL HIGHLIGHTING
+" =============================================================================
+
+
+" " add this to help Vim recognize the tmux override
+if &term =~# '256color'
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+
+syntax on
+colorscheme evening  
+highlight Normal       guifg=#cfcfcf guibg=#1d1d1d
+highlight LineNr       guifg=#999999 guibg=#1d1d1d
+highlight ColorColumn  guibg=#333333 
+highlight EndOfBuffer  guifg=#ffffff guibg=#1d1d1d
+
+
+" command for identifying highlight terms
+command! SynID echo synIDattr(synID(line("."), col("."), 1), "name")
+nmap <leader>s :SynID<CR>
+
+
 
 
 " =============================================================================
@@ -261,5 +281,6 @@ highlight pythonInclude      guifg=#9328c1
 highlight pythonBuiltin      guifg=#9328c1
 highlight pythonBuiltinObj   guifg=#9328c1
 highlight pythonClassVar     guifg=#9328c1
+
 
 
